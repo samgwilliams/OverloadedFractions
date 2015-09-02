@@ -13,5 +13,12 @@ namespace Fractions
             Fraction test = new Fraction(18, 20);
             Console.Read();
         }
+
+        public bool TestNormalization()
+        {
+            bool result = false;
+            Fraction test1 = new Fraction(15, 20);
+
+        }
     }
 }

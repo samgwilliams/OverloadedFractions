@@ -56,6 +56,62 @@ namespace Fractions
             
         }
 
+        public Fraction Subtract(Fraction otherFraction)
+        {
+            if (this.denominator != otherFraction.GetDenominator())
+            {
+                long lcm = GetLCM(this.denominator, otherFraction.denominator);
+                return new Fraction(((this.numerator * lcm) - (otherFraction.numerator * lcm)),
+                    ((this.denominator * lcm) + (otherFraction.denominator * lcm)));
+            }
+            else
+            {
+                return new Fraction((this.numerator - otherFraction.numerator), this.denominator);
+            }
+
+        }
+
+        public Fraction Multiply(Fraction otherFraction)
+        {
+            return new Fraction((this.numerator * otherFraction.numerator), (this.denominator * otherFraction.denominator));
+        }
+
+        public Fraction Divide(Fraction otherFraction)
+        {
+            return new Fraction((this.numerator * otherFraction.denominator), (this.denominator * otherFraction.numerator));
+        }
+
+        public Fraction Increment()
+        {
+            return new Fraction(this.numerator, (this.denominator + this.denominator));
+        }
+
+        public Fraction Negate()
+        {
+            return new Fraction((this.numerator * -1), this.denominator);
+        }
+
+        public int Compare(Fraction otherFraction)
+        {
+            if (otherFraction.ToDouble() > this.ToDouble())
+            {
+                return 1;
+            }
+            else if (otherFraction.ToDouble() < this.ToDouble())
+            {
+                return -1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        public bool Equals(Fraction otherFraction)
+        {
+            return (this.ToDouble() == otherFraction.ToDouble());
+        }
+
         public static long GetLCM(long num1, long num2)
         {
             long numOne, numTwo;
