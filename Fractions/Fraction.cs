@@ -39,7 +39,8 @@ namespace Fractions
 
         public double ToDouble()
         {
-            return numerator / denominator;
+            double fractionDouble = ((double)this.numerator / (double)this.denominator);
+            return fractionDouble;
         }
 
         public Fraction Add(Fraction otherFraction)
@@ -83,7 +84,7 @@ namespace Fractions
 
         public Fraction Increment()
         {
-            return new Fraction(this.numerator, (this.denominator + this.denominator));
+            return new Fraction((this.numerator + this.denominator), this.denominator);
         }
 
         public Fraction Negate()
@@ -95,14 +96,18 @@ namespace Fractions
         {
             if (otherFraction.ToDouble() > this.ToDouble())
             {
+            
+
                 return 1;
             }
             else if (otherFraction.ToDouble() < this.ToDouble())
             {
+
                 return -1;
             }
             else
             {
+
                 return 0;
             }
         }
@@ -152,6 +157,11 @@ namespace Fractions
             }
             //Console.WriteLine("Return numOne: " + numOne);
             return numOne;
+        }
+
+        public override string ToString()
+        {
+            return (this.numerator + "/" + this.denominator);
         }
     }
 }
